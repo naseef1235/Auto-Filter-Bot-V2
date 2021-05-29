@@ -185,12 +185,12 @@ async def addchannel(client: Bot, message: Message):
     if docs:
         await savefiles(docs, group_id)
     else:
-        await intmsg.edit_text("Channel couldn't be added. Try after some time!")
+        await intmsg.edit_text("movie couldn't be added. Try after some time!")
         return
 
     await channelgroup(channel_id, channel_name, group_id, group_name)
 
-    await intmsg.edit_text("Channel added successfully!")
+    await intmsg.edit_text("movies added successfully!")
 
 
 @Client.on_message(filters.group & filters.command(["del"]))
@@ -241,7 +241,7 @@ async def deletechannelfilters(client: Bot, message: Message):
         return
 
     intmsg = await message.reply_text(
-        "<i>Please wait while I'm deleteing your channel"
+        "<i>Please wait while I'm deleteing movies from channel"
         "\n\nDon't give any other commands now!</i>"
     )
 
@@ -296,7 +296,7 @@ async def deleteallfilters(client: Bot, message: Message):
 
     if delete_all == 0:
         await intmsg.edit_text(
-            "All filters from group deleted successfully!"
+            "All movies from group deleted successfully!"
         )
     elif delete_all == 1:
         await intmsg.edit_text(
@@ -317,7 +317,7 @@ async def stats(client: Bot, message: Message):
     group_id = message.chat.id
     group_name = message.chat.title
 
-    stats = f"Stats for Auto Filter Bot in {group_name}\n\n<b>Connected channels ;</b>"
+    stats = f"Stats for Auto movie finder Bot in {group_name}\n\n<b>Connected channels ;</b>"
 
     chdetails = await channeldetails(group_id)
     if chdetails:
@@ -333,7 +333,7 @@ async def stats(client: Bot, message: Message):
 
     total = await countfilters(group_id)
     if total:
-        stats += f"\n\n<b>Total number of filters</b> : {total}"
+        stats += f"\n\n<b>Total number of movies</b> : {total}"
 
     await message.reply_text(stats)
 
